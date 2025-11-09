@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dış Mekan Süs Bitkileri İhracat Portalı</title>
+    <title>EMMC Danışmanlık Süs Bitkileri İhracat Rehberi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <style>
@@ -47,436 +47,602 @@
     </style>
     <!-- Chosen Palette: "Calm Neutral Green" (White, Gray-100, Green-800, Gray-700) -->
     <!-- Application Structure Plan: SPA with a fixed sidebar navigation. This non-linear, task-oriented structure is chosen over a linear report to empower the novice exporter. Users can jump directly to 'Lojistik' (Logistics) or 'Müşteriler' (Customers) as needed. A 'Dashboard' (Ana Sayfa) provides a high-level summary, while other sections ('Yasal Mevzuat', 'İhracat Verileri') offer interactive drill-downs. This design prioritizes usability and self-guided exploration of complex information. -->
-    <!-- Visualization & Content Choices: [Ürünler: HTML Table for quick reference. Mevzuat: Styled HTML list for step-by-step process clarity. İhracat Verileri: Chart.js Bar (Goal: Show trend) & Pie (Goal: Show share) charts for dynamic data viz; `maintainAspectRatio: false` used in constrained containers. Müşteriler: JS-powered searchable/filterable HTML table (Goal: Interactive lead gen). Lojistik: JS-powered accordion (Goal: Organize dense info). All choices avoid SVG/Mermaid and use HTML/JS/Chart.js for interactivity. -->
+    <!-- Visualization & Content Choices: [Ürünler: HTML Table for quick reference. Mevzuat: Styled HTML list for step-by-step process clarity. İhracat Verileri: Chart.js Bar (Goal: Show trend) & Pie (Goal: Show share) charts for dynamic data viz; `maintainAspectRatio: false` used in constrained containers. Müşteriler: JS-powered searchable/filterable HTML table (Goal: Interactive lead gen). Lojistik: JS-powered accordion (Goal: Organize dense info). Pazar Analizi: Detailed Accordion/Card structure for deep, strategic insight. All choices avoid SVG/Mermaid and use HTML/JS/Chart.js for interactivity. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
 <body class="text-gray-800">
 
-    <div class="flex flex-col md:flex-row min-h-screen">
+    <!-- ANA KAPSAYICI: Tüm içeriği dikey (column) olarak hizalar ve min-h-screen ile tüm ekranı kaplar -->
+    <div class="flex flex-col min-h-screen">
         
-        <nav class="w-full md:w-64 bg-white shadow-md flex-shrink-0">
-            <div class="p-5 border-b">
-                <h1 class="text-xl font-bold text-green-800">İhracat Portalı</h1>
-                <p class="text-sm text-gray-600">Süs Bitkileri Rehberi</p>
-            </div>
-            <ul class="py-4">
-                <li><a href="#" class="nav-link active block py-3 px-5 text-gray-700" data-target="home">Ana Sayfa</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="products">Ürünler ve GTİP</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="legislation">Yasal Mevzuat</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="data">İhracat Verileri</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="markets">Pazar Analizi</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="customers">Potansiyel Müşteriler</a></li>
-                <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="logistics">Lojistik Rehberi</a></li>
-            </ul>
-        </nav>
-
-        <main class="flex-1 p-6 md:p-10 bg-gray-50 overflow-y-auto">
+        <!-- YATAY KAPSAYICI: Navigasyon ve İçerik Alanını (main+footer) yan yana tutar -->
+        <div class="flex flex-1">
             
-            <section id="home-content" class="content-section">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Dış Mekan Süs Bitkileri İhracat Raporuna Hoş Geldiniz</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Bu interaktif portal, dış mekan süs bitkileri ihracatına başlarken ihtiyaç duyacağınız temel bilgileri sağlamak amacıyla hazırlanmıştır. İhracat deneyiminiz olmasa dahi, bu rehber size yasal gereklilikler, pazar fırsatları ve lojistik süreçler hakkında net bir yol haritası sunacaktır.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-700">
-                        <h3 class="text-xl font-semibold mb-2 text-green-800">Raporun Amacı</h3>
-                        <p class="text-gray-600">Sizi sıfır noktasından alıp, ürünlerinizin uluslararası pazarlara nasıl ulaştırılacağı konusunda bilgilendirmek ve ilk ihracatınızı başarıyla tamamlamanızı sağlamaktır.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-700">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-800">Hedef Ürünler</h3>
-                        <p class="text-gray-600">Rapor, Leylandi, Arizona Selvi, Mazı çeşitleri (Gold Rider, Top, Piramit, Smargat), Şimşir ve Taflan gibi spesifik dış mekan bitkilerine odaklanmıştır.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-600">
-                        <h3 class="text-xl font-semibold mb-2 text-yellow-700">Nasıl Kullanılır?</h3>
-                        <p class="text-gray-600">Soldaki menüyü kullanarak ilgilendiğiniz bölümlere (GTİP kodları, Pazar Analizi, Lojistik vb.) doğrudan geçiş yapabilir ve bilgileri interaktif olarak inceleyebilirsiniz.</p>
-                    </div>
+            <!-- NAVİGASYON (Sidebar) -->
+            <nav class="w-full md:w-64 bg-white shadow-md flex-shrink-0">
+                <div class="p-5 border-b">
+                    <h1 class="text-lg font-bold text-green-800">EMMC Danışmanlık</h1>
+                    <p class="text-sm text-gray-600">Süs Bitkileri İhracat Rehberi</p>
                 </div>
+                <ul class="py-4">
+                    <li><a href="#" class="nav-link active block py-3 px-5 text-gray-700" data-target="home">Ana Sayfa</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="products">Ürünler ve GTİP</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="legislation">Yasal Mevzuat</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="data">İhracat Verileri</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="cost-analysis">Maliyet Analizi</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="markets">Pazar Analizi</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="customers">Potansiyel Müşteriler</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-5 text-gray-700" data-target="logistics">Lojistik Rehberi</a></li>
+                </ul>
+            </nav>
 
-                <!-- GÜNCELLENMİŞ ÜRÜN GÖRSELLERİ BÖLÜMÜ -->
-                <div class="mt-10 bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-semibold mb-6 text-gray-900">İhraç Edilecek Ana Ürünlerin Görselleri</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                        
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=LEYLANDI" alt="Leylandi bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Leylandi</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=ARIZONA+SELVI" alt="Arizona Selvi bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Arizona Selvi</p>
-                        </div>
-
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=TOP+MAZI" alt="Top Mazı ve Gold Rider görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Top Mazı / Gold Rider</p>
-                        </div>
-
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=PIRAMIT+MAZI" alt="Piramit Mazı ve Smargat görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Piramit / Smargat Mazı</p>
-                        </div>
-
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=SIMSIR" alt="Şimşir bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Şimşir (Boxwood)</p>
-                        </div>
-
-                        <div class="text-center">
-                            <img src="https://placehold.co/200x150/065f46/ffffff?text=TAFLAN" alt="Taflan bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
-                            <p class="text-sm font-medium text-gray-700">Taflan (Euonymus)</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
-
-            <section id="products-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Ürünler, GTİP Kodları ve CITES Durumu</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Ürünlerinizin gümrük işlemlerinde doğru sınıflandırılması için Gümrük Tarife İstatistik Pozisyonu (GTİP) kodları hayati önem taşır. Bu bölümde, bitkilerinizin potansiyel GTİP kodlarını ve uluslararası ticaretlerindeki CITES durumunu bulacaksınız.
-                </p>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
-                    <h3 class="text-xl font-semibold mb-4 text-green-800">GTİP Kod Eşleştirmesi</h3>
-                    <p class="mb-4 text-gray-600">Listelenen bitkiler "Canlı Ağaçlar ve Diğer Bitkiler" başlığı altındaki <strong>06.02</strong> faslında yer almaktadır. En yaygın kullanılan pozisyonlar aşağıdadır:</p>
-                    <table class="w-full min-w-max text-left">
-                        <thead class="bg-gray-100 border-b">
-                            <tr>
-                                <th class="p-4 font-semibold">GTİP Kodu</th>
-                                <th class="p-4 font-semibold">Açıklama</th>
-                                <th class="p-4 font-semibold">İlgili Ürünler</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="p-4 align-top"><strong>0602.90.41.00.00</strong></td>
-                                <td class="p-4 align-top">Açık havada yetiştirmeye uygun ağaç ve çalıların çelikleri (köklendirilmemiş) ve fideleri (Diğer) - İğne yapraklılar (Koniferler)</td>
-                                <td class="p-4 align-top">Leylandi, Arizona Selvi, Gold Rider, Mazı Çeşitleri (Top, Piramit, Skyrocket, Smargat), Şimşir</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="p-4 align-top"><strong>0602.90.45.00.00</strong></td>
-                                <td class="p-4 align-top">Açık havada yetiştirmeye uygun ağaçlar, çalılar (orman ağaçları fidanları hariç) - Köklenmiş çelikler ve genç bitkiler</td>
-                                <td class="p-4 align-top">Şimşir, Taflan (Euonymus)</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="p-4 align-top"><strong>0602.90.49.00.19</strong></td>
-                                <td class="p-4 align-top">Açık havada yetiştirmeye uygun diğer ağaç ve çalılar</td>
-                                <td class="p-4 align-top">Daha büyük, saksılı veya kök topraklı bitkiler bu kategoriye girebilir.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="mt-4 text-sm text-gray-600"><strong>Not:</strong> GTİP kodu, bitkinin boyutu (fide, genç bitki, yetişkin ağaç), kök durumu (çıplak kök, saksılı) gibi faktörlere göre değişebilir. Nihai kod tespiti için bir gümrük müşavirine danışmanız şarttır.</p>
-                </div>
-
-                <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4 text-green-800">CITES Kapsamı Araştırması</h3>
-                    <p class="text-gray-700 mb-2"><strong>CITES (Nesli Tehlike Altında Olan Yabani Hayvan ve Bitki Türlerinin Uluslararası Ticaretine İlişkin Sözleşme)</strong>, nesli tükenmekte olan bitkilerin ticaretini düzenler.</p>
-                    <p class="text-gray-700">Yaptığımız araştırmaya göre, listelediğiniz ürünler (Leylandi, Mazı, Selvi, Şimşir, Taflan gibi yaygın kültivarlar ve türler) CITES sözleşmesinin Ek Listelerinde yer <strong>almamaktadır</strong>.</p>
-                    <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-600 rounded">
-                        <p class="font-medium text-green-900"><strong>Sonuç:</strong> Bu ürünlerin ihracatı için CITES belgesi (İzin Belgesi) alınmasına gerek yoktur. Bu, ihracat sürecini önemli ölçüde basitleştiren bir faktördür.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="legislation-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Yasal Mevzuat ve Bakanlık Ön İzni</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Süs bitkileri ihracatı, bitki sağlığı ve karantina yönetmelikleri nedeniyle özel izinlere tabidir. Bu bölümde, "Tarım ve Orman Bakanlığı ön izni" olarak belirtilen sürecin aslında ne anlama geldiğini ve nasıl tamamlanacağını detaylandırıyoruz.
-                </p>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-semibold mb-4 text-green-800">Ön İzin: Bitki Sağlık Sertifikası (Phytosanitary Certificate)</h3>
-                    <p class="text-gray-700 mb-4">
-                        Bahsedilen "ön izin", esasen ihracat sevkiyatınıza eşlik etmesi zorunlu olan <strong>Bitki Sağlık Sertifikası</strong>'dır. Bu sertifika, ihraç ettiğiniz bitkilerin, hedef ülkenin belirlediği bitki sağlığı standartlarına uygun olduğunu, zararlı hastalık ve haşerelerden arî olduğunu kanıtlayan uluslararası geçerliliğe sahip resmi bir belgedir.
-                    </p>
-                    <p class="text-gray-700 mb-4">
-                        Bu belge olmadan bitkilerinizin alıcı ülkenin gümrüğünden geçmesi mümkün değildir.
-                    </p>
-
-                    <h4 class="text-xl font-semibold mt-6 mb-3 text-gray-800">Bitki Sağlık Sertifikası Alım Süreci (Adım Adım)</h4>
-                    <ol class="relative border-l border-gray-300 ml-4">                  
-                        <li class="mb-10 ml-6">            
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
-                                <span class="font-bold text-green-800">1</span>
-                            </span>
-                            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Hedef Ülke Gerekliliklerinin Tespiti</h3>
-                            <p class="mb-4 text-base font-normal text-gray-600">İlk adım, bitkileri göndereceğiniz ülkenin (örn: Almanya, Hollanda) istediği spesifik bitki sağlığı şartlarını (hangi testlerin istendiği, hangi haşerelere karşı "sıfır tolerans" olduğu vb.) öğrenmektir. Bu bilgiyi alıcınızdan veya Tarım ve Orman Bakanlığı'nın ilgili birimlerinden edinebilirsiniz.</p>
-                        </li>
-                        <li class="mb-10 ml-6">
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
-                                <span class="font-bold text-green-800">2</span>
-                            </span>
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">Resmi Başvuru</h3>
-                            <p class="text-base font-normal text-gray-600">Bitkilerinizin bulunduğu (fidanlık) yerdeki <strong>İl/İlçe Tarım ve Orman Müdürlüğü</strong>'ne bağlı Zirai Karantina birimine resmi başvuruda bulunulur. Bu başvuru genellikle online sistemler (örn: GGBS - Gıda Güvenliği Bilgi Sistemi) üzerinden de başlatılabilir.</p>
-                        </li>
-                        <li class="mb-10 ml-6">
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
-                                <span class="font-bold text-green-800">3</span>
-                            </span>
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">Fidanlık Denetimi ve Numune Alımı</h3>
-                            <p class="text-base font-normal text-gray-600">Bakanlık tarafından görevlendirilen bir Zirai Karantina İnspektörü (denetçi), fidanlığınıza gelerek ihraç edilecek bitkileri yerinde inceler. Gerekli görürse, laboratuvar analizi için topraktan veya bitkinin kendisinden numuneler alır.</p>
-                        </li>
-                        <li class="mb-10 ml-6">
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
-                                <span class="font-bold text-green-800">4</span>
-                            </span>
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">Yükleme Kontrolü (Opsiyonel ama Önemli)</h3>
-                            <p class="text-base font-normal text-gray-600">Bitkiler TIR'a veya konteynere yüklenirken inspektörün tekrar gelerek yüklemeye nezaret etmesi ve taşıma aracının da (örn: TIR dorsesi) temiz olduğunu onaylaması gerekebilir. Bu, kontaminasyon riskini önler.</p>
-                        </li>
-                        <li class="ml-6">
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
-                                <span class="font-bold text-green-800">5</span>
-                            </span>
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">Sertifikanın Düzenlenmesi</h3>
-                            <p class="text-base font-normal text-gray-600">Tüm denetimler ve (varsa) laboratuvar sonuçları olumlu ise, Bakanlık yetkilisi hedef ülkenin dilinde veya İngilizce olarak Bitki Sağlık Sertifikası'nı düzenler ve imzalar. Bu belge, gümrük beyannamesi ile birlikte alıcıya gönderilir.</p>
-                        </li>
-                    </ol>
-
-                    <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
-                        <h4 class="font-bold text-yellow-800">Önemli Notlar:</h4>
-                        <ul class="list-disc list-inside text-yellow-700 mt-2">
-                            <li>Bu süreç, ihracatçı firmanızın "Bitki Yetiştirici Belgesi" veya "Süs Bitkisi Üretici Belgesi" gibi kayıtlara sahip olmasını gerektirebilir.</li>
-                            <li>Tüm süreç boyunca İl Tarım Müdürlüğü ile yakın temas halinde olmanız kritik önem taşır.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="data-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Türkiye İhracat İstatistikleri (GTİP: 0602.90)</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Sektörünüzün genel performansını görmek için "Diğer Canlı Bitkiler" (0602.90) kategorisindeki son yıllara ait ihracat verilerini (TÜİK ve Ticaret Bakanlığı verileri baz alınarak) analiz ettik. Bu veriler, pazarın büyüklüğünü ve ana destinasyonları göstermektedir.
-                </p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Yıllara Göre İhracat Değeri (Milyon $)</h3>
-                        <p class="text-center text-gray-600 text-sm mb-4">0602.90 GTİP Kodu - Türkiye Geneli</p>
-                        <div class="chart-container">
-                            <canvas id="exportTrendChart"></canvas>
-                        </div>
-                        <p class="mt-4 text-gray-700"><strong>Analiz:</strong> Grafikte de görüldüğü gibi, Türkiye'nin canlı bitki ihracatı son yıllarda istikrarlı bir artış trendindedir. 2021'de yaklaşık 130 Milyon $ olan ihracat, 2024'te 175 Milyon $'a yükselerek pazarın güçlü ve büyüyen bir potansiyele sahip olduğunu göstermektedir.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Başlıca İhracat Pazarları (2024 Payı)</h3>
-                        <p class="text-center text-gray-600 text-sm mb-4">0602.90 GTİP Kodu - Değer Bazlı</p>
-                        <div class="chart-container" style="height: 350px;">
-                            <canvas id="marketShareChart"></canvas>
-                        </div>
-                        <p class="mt-4 text-gray-700"><strong>Analiz:</strong> Hollanda, bir ticaret merkezi (re-export) olması nedeniyle en büyük pazar olarak öne çıkmaktadır. Almanya, İngiltere ve Azerbaycan doğrudan tüketim ve peyzaj projeleri için önemli alıcılardır. İhracatın çeşitlendirilmiş olması, riskin dağıtılması açısından olumlu bir göstergedir.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="markets-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Pazar Analizi ve Spesifik İhtiyaçlar</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Hangi pazara odaklanacağınızı seçerken, sadece ekonomik büyüklüğe değil, aynı zamanda o bölgenin iklimsel ve kültürel ihtiyaçlarına da dikkat etmek gerekir. Aşağıda üç ana pazar grubunun spesifik gereksinimlerini ve bu ihtiyaçlara sizin ürünlerinizle nasıl cevap verileceğini göreceksiniz.
-                </p>
-                
-                <div id="market-needs-accordion" class="space-y-4">
+            <!-- SAĞ TARAF KAPSAYICISI: Main içeriği ve altbilgiyi dikey olarak hizalar. Ana kaydırma alanı burasıdır. -->
+            <div class="flex flex-col flex-1 overflow-y-auto">
+                <main class="flex-1 p-6 md:p-10 bg-gray-50">
                     
-                    <div class="bg-white rounded-lg shadow-md">
-                        <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-semibold text-xl text-green-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-t-lg">
-                            <span>1. Avrupa Birliği Pazarı (Almanya, Hollanda, Fransa)</span>
-                            <span class="accordion-icon-market transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content-market hidden p-6 border-t">
-                            <h4 class="font-bold text-lg mb-3 text-gray-800">Temel Trendler ve İhtiyaçlar:</h4>
-                            <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                <li><strong>Yüksek Kalite ve Standardizasyon:</strong> AB pazarı, kalitede tutarlılık (aynı boy, aynı form) ve bitki sağlığı sertifikalarının eksiksiz olmasını talep eder.</li>
-                                <li><strong>Büyük ve Formlu Bitki Talebi:</strong> Peyzaj projelerinde hemen sonuç almak istedikleri için genellikle büyük boy, özel budanmış veya topiary formlu bitkilere (Örn: **Top Mazı**) yüksek fiyat ödenir.</li>
-                                <li><strong>Çevreye Duyarlılık:</strong> Pestisit ve kimyasal kullanımının minimumda olduğu, sürdürülebilir yöntemlerle üretilmiş bitkiler tercih edilir.</li>
-                                <li><strong>Gizlilik Çözümleri:</strong> Kentsel alanlarda yoğun yaşam nedeniyle, hızlı büyüyen ve opak çit bitkileri (**Leylandi, Smargat Mazı**) en çok arananlardır.</li>
-                            </ul>
-                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-                                <p class="font-medium text-blue-900"><strong>Ürün Eşleşmesi:</strong> Formlu Mazı çeşitleri, hızlı büyüyen Leylandi ve Smargat türleri. Yüksek kalite standartlarına odaklanılmalıdır.</p>
+                    <section id="home-content" class="content-section">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Dış Mekan Süs Bitkileri İhracat Raporuna Hoş Geldiniz</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Bu interaktif portal, dış mekan süs bitkileri ihracatına başlarken ihtiyaç duyacağınız temel bilgileri sağlamak amacıyla hazırlanmıştır. İhracat deneyiminiz olmasa dahi, bu rehber size yasal gereklilikler, pazar fırsatları ve lojistik süreçler hakkında net bir yol haritası sunacaktır.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-700">
+                                <h3 class="text-xl font-semibold mb-2 text-green-800">Raporun Amacı</h3>
+                                <p class="text-gray-600">Sizi sıfır noktasından alıp, ürünlerinizin uluslararası pazarlara nasıl ulaştırılacağı konusunda bilgilendirmek ve ilk ihracatınızı başarıyla tamamlamanızı sağlamaktır.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-700">
+                                <h3 class="text-xl font-semibold mb-2 text-blue-800">Hedef Ürünler</h3>
+                                <p class="text-gray-600">Rapor, Leylandi, Arizona Selvi, Mazı çeşitleri (Gold Rider, Top, Piramit, Smargat), Şimşir ve Taflan gibi spesifik dış mekan bitkilerine odaklanmıştır.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-600">
+                                <h3 class="text-xl font-semibold mb-2 text-yellow-700">Nasıl Kullanılır?</h3>
+                                <p class="text-gray-600">Soldaki menüyü kullanarak ilgilendiğiniz bölümlere (GTİP kodları, Pazar Analizi, Lojistik vb.) doğrudan geçiş yapabilir ve bilgileri interaktif olarak inceleyebilirsiniz.</p>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="bg-white rounded-lg shadow-md">
-                        <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-semibold text-xl text-green-800 bg-gray-100 hover:bg-gray-200 focus:outline-none">
-                            <span>2. Orta Doğu Pazarı (BAE, Katar, Suudi Arabistan)</span>
-                            <span class="accordion-icon-market transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content-market hidden p-6 border-t">
-                            <h4 class="font-bold text-lg mb-3 text-gray-800">Temel Trendler ve İhtiyaçlar:</h4>
-                            <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                <li><strong>İklimsel Dayanıklılık:</strong> Aşırı sıcaklık ve kuraklığa, tuzluluğa dayanabilen bitkiler olmazsa olmazdır. **Arizona Selvi** bu pazar için idealdir.</li>
-                                <li><strong>Prestij ve Lüks Projeler:</strong> Oteller, lüks konut siteleri ve hükümet binaları için projeye özel, gösterişli ve genellikle büyük boyutlu bitkiler talep edilir. Estetik (rengi, formu) en önemli faktördür.</li>
-                                <li><strong>Anında Peyzaj (Instant Landscape):</strong> Projelerin hızlı tamamlanması gerektiği için, yüksek oranda yetişmiş, büyük hacimli (ağaç formunda) bitkilere acil talep oluşur.</li>
-                                <li><strong>Bakım Kolaylığı:</strong> Uzun vadede az bakım gerektiren, sağlam ve dayanıklı türler aranır (**Şimşir, Taflan** gibi).</li>
-                            </ul>
-                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-                                <p class="font-medium text-blue-900"><strong>Ürün Eşleşmesi:</strong> Büyük saksılı, olgun **Arizona Selvi** (kuraklık/sıcaklık direnci), formlu Şimşir (saksıda kolay taşıma ve prestij).</p>
+                        <!-- ÜRÜN GÖRSELLERİ BÖLÜMÜ -->
+                        <div class="mt-10 bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-2xl font-semibold mb-6 text-gray-900">İhraç Edilecek Ana Ürünlerin Görselleri</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                                
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=LEYLANDI" alt="Leylandi bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Leylandi</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=ARIZONA+SELVI" alt="Arizona Selvi bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Arizona Selvi</p>
+                                </div>
+
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=TOP+MAZI" alt="Top Mazı ve Gold Rider görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Top Mazı / Gold Rider</p>
+                                </div>
+
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=PIRAMIT+MAZI" alt="Piramit Mazı ve Smargat görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Piramit / Smargat Mazı</p>
+                                </div>
+
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=SIMSIR" alt="Şimşir bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Şimşir (Boxwood)</p>
+                                </div>
+
+                                <div class="text-center">
+                                    <img src="https://placehold.co/200x150/065f46/ffffff?text=TAFLAN" alt="Taflan bitkisi görseli" class="w-full h-auto rounded-lg shadow-md mb-2">
+                                    <p class="text-sm font-medium text-gray-700">Taflan (Euonymus)</p>
+                                </div>
+                                
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="bg-white rounded-lg shadow-md">
-                        <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-semibold text-xl text-green-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-b-lg">
-                            <span>3. Türk Cumhuriyetleri Pazarı (Azerbaycan, Özbekistan, Kazakistan)</span>
-                            <span class="accordion-icon-market transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content-market hidden p-6 border-t">
-                            <h4 class="font-bold text-lg mb-3 text-gray-800">Temel Trendler ve İhtiyaçlar:</h4>
-                            <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                <li><strong>Kışa Dayanıklılık (Özellikle Kazakistan):</strong> Kışları sert geçen bölgeler için dona ve soğuğa karşı yüksek dirençli bitkiler esastır. Mazı ve Servi türlerinin dayanıklı çeşitleri aranır.</li>
-                                <li><strong>Hacimli Tedarik ve Uygun Fiyat:</strong> Hızla büyüyen konut ve şehir parkı projeleri, büyük hacimli, ancak Avrupa'ya göre daha rekabetçi fiyatlı bitki tedarikçilerine ihtiyaç duyar.</li>
-                                <li><strong>Kolay Lojistik:</strong> Türkiye'ye olan yakınlık ve karayolu ile ulaşım kolaylığı nedeniyle, hızlı ve kontrollü sevkiyat (Frigo TIR) beklenir.</li>
-                                <li><strong>Çeşitlilik:</strong> Geniş bir yelpazede (**Yeşil Smargat, Piramit Mazı, Taflan**) talep edilir, çünkü yeni peyzaj tasarımları için zengin çeşit arayışı vardır.</li>
-                            </ul>
-                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-                                <p class="font-medium text-blue-900"><strong>Ürün Eşleşmesi:</strong> Mazı ve Servi çeşitleri (kışa dayanıklı formlar), toplu alım için fiyat avantajı sunulan Leylandi. Karayolu taşımacılığında güvenilirlik.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="customers-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Potansiyel Müşteriler (AB, Orta Doğu ve Türk Cumhuriyetleri)</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Bu tabloda, farklı coğrafyalardaki potansiyel alıcılar (fidanlıklar, peyzaj firmaları ve toptancılar) listelenmiştir. Hedef pazarınıza göre filtreleme yaparak ilk temas listenizi oluşturabilirsiniz.
-                </p>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex flex-col md:flex-row gap-4 mb-6">
-                        <div class="flex-1">
-                            <label for="customer-search" class="block text-sm font-medium text-gray-700">Firma Adı Ara</label>
-                            <input type="text" id="customer-search" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="Firma adıyla ara...">
-                        </div>
-                        <div class="flex-1">
-                            <label for="country-filter" class="block text-sm font-medium text-gray-700">Ülkeye Göre Filtrele</label>
-                            <select id="country-filter" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
-                                <option value="">Tüm Ülkeler</option>
-                                <option value="Almanya">Almanya</option>
-                                <option value="Hollanda">Hollanda</option>
-                                <option value="Fransa">Fransa</option>
-                                <option value="İtalya">İtalya</option>
-                                <option value="BAE">BAE (Birleşik Arap Emirlikleri)</option>
-                                <option value="Suudi Arabistan">Suudi Arabistan</option>
-                                <option value="Katar">Katar</option>
-                                <option value="Azerbaycan">Azerbaycan</option>
-                                <option value="Özbekistan">Özbekistan</option>
-                                <option value="Kazakistan">Kazakistan</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-max text-left">
-                            <thead class="bg-gray-100 border-b">
-                                <tr>
-                                    <th class="p-4 font-semibold">Firma Adı</th>
-                                    <th class="p-4 font-semibold">Ülke</th>
-                                    <th class="p-4 font-semibold">Web Sitesi</th>
-                                    <th class="p-4 font-semibold">Profil</th>
-                                </tr>
-                            </thead>
-                            <tbody id="customer-table-body">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <section id="logistics-content" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">İhracat Lojistik Rehberi (Canlı Bitki)</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Canlı bitki lojistiği, ürünlerin taze ve hasarsız bir şekilde alıcıya ulaşması için özel dikkat ve ekipman gerektiren, ihracatın en kritik aşamasıdır. Bu bölümde, süreçle ilgili temel gereksinimler ve pratik öneriler yer almaktadır.
-                </p>
-
-                <div id="logistics-accordion">
-                    
-                    <div class="bg-white rounded-lg shadow-md mb-4">
-                        <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
-                            <span>1. Taşıma Şekli ve Nakliye Tercihleri</span>
-                            <span class="accordion-icon transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content hidden p-5 border-t">
-                            <h4 class="font-bold text-green-700">Zorunlu Tercih: Frigorifik (Soğutuculu) TIR</h4>
-                            <p class="text-gray-600 mt-2">
-                                Canlı bitkiler, sıcaklık dalgalanmalarına karşı çok hassastır. Özellikle AB ülkelerine yapılan sevkiyatlarda, yolculuk süresi birkaç günü bulabilir. Ortadoğu ve Türk Cumhuriyetleri'ne karayolu ile yapılan sevkiyatlarda sıcaklık kontrolü (frigo TIR) hayati önem taşır.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
-                                <li><strong>Neden Frigo?</strong> Bitkilerin "uyku" halinde kalmasını (strese girmemesini), su kaybını minimuma indirmesini ve canlılığını korumasını sağlar.</li>
-                                <li><strong>Sıcaklık Aralığı:</strong> Genellikle +4°C ila +8°C arası bir sıcaklık ideal kabul edilir. Bu, bitki türüne göre ayarlanmalıdır.</li>
-                                <li><strong>Taşıyıcı Seçimi:</strong> Canlı bitki taşımacılığı konusunda tecrübeli, güvenilir ve GPS takibi sunan lojistik firmaları ile çalışılmalıdır.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-md mb-4">
-                        <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
-                            <span>2. Paketleme Detayları ve Standartları</span>
-                            <span class="accordion-icon transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content hidden p-5 border-t">
-                            <p class="text-gray-600 mt-2 mb-4">Paketleme, bitkileri hem fiziksel hasardan korur hem de taşımayı verimli hale getirir.</p>
-                            <ul class="list-disc list-inside text-gray-600 mt-2 space-y-2">
-                                <li><strong>Saksı ve Kök Toprağı:</strong> Bitkiler genellikle saksılı (pot-in-pot) veya kök toprağı streç film ya da jüt bezi ile sarılmış (root-balled) halde yüklenir. Çıplak kök, bu türler için tavsiye edilmez.</li>
-                                <li><strong>Paletleme:</strong> Küçük saksılı bitkiler (Şimşir, Taflan) ahşap paletler üzerine dizilip streç film ile sabitlenebilir.</li>
-                                <li><strong>CC Konteynerler (Danimarka Arabası):</strong> Bu, Avrupa'da endüstri standardıdır. Tekerlekli, metal, çok raflı bu arabalar (trolleys), bitkilerin sarsılmadan ve üst üste binmeden taşınmasını sağlar. TIR'a yüklenmesi ve müşterinin indirmesi çok kolaydır. Mümkünse CC konteyner ile yükleme yapmanız rekabet gücünüzü artırır.</li>
-                                <li><strong>Etiketleme:</strong> Her bitki veya palet üzerinde türünü, boyunu ve alıcı bilgilerini içeren net etiketler olmalıdır.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-md mb-4">
-                        <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
-                            <span>3. Lojistikte Dikkat Edilmesi Gerekenler</span>
-                            <span class="accordion-icon transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content hidden p-5 border-t">
-                            <ul class="list-disc list-inside text-gray-600 mt-2 space-y-2">
-                                <li><strong>Zamanlama:</strong> Canlı bitki sevkiyatı "tam zamanında" (just-in-time) prensibiyle çalışır. Bitkiler söküldükten/hazırlandıktan hemen sonra yüklenmeli ve yola çıkmalıdır. Depoda bekleme süresi minimum olmalıdır.</li>
-                                <li><strong>Evraklar (Sertifikalar):</strong> Bitki Sağlık Sertifikası, Fatura, Çeki Listesi ve ATR/EUR.1 Belgesi (AB için) gibi evraklar eksiksiz ve hatasız olmalı, TIR şoförüne teslim edilmelidir.</li>
-                                <li><strong>Sulama:</strong> Bitkiler yüklemeden hemen önce yeterince sulanmalı (ancak saksılardan su akacak kadar değil) ve yolculuk boyunca dayanacak neme sahip olmalıdır.</li>
-                                <li><strong>Hava Dolaşımı:</strong> Frigo TIR içinde havanın dolaşması, bitkilerin "nefes alması" için yükleme planlaması buna göre yapılmalı, bitkiler çok sıkışık istiflenmemelidir.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-md mb-4">
-                        <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
-                            <span>4. Yaygın Sorunlar ve Çözüm Önerileri</span>
-                            <span class="accordion-icon transform rotate-0">▼</span>
-                        </button>
-                        <div class="accordion-content hidden p-5 border-t">
+                    <section id="products-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Ürünler, GTİP Kodları ve CITES Durumu</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Ürünlerinizin gümrük işlemlerinde doğru sınıflandırılması için Gümrük Tarife İstatistik Pozisyonu (GTİP) kodları hayati önem taşır. Bu bölümde, bitkilerinizin potansiyel GTİP kodlarını ve uluslararası ticaretlerindeki CITES durumunu bulacaksınız.
+                        </p>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                            <h3 class="text-xl font-semibold mb-4 text-green-800">GTİP Kod Eşleştirmesi</h3>
+                            <p class="mb-4 text-gray-600">Listelenen bitkiler "Canlı Ağaçlar ve Diğer Bitkiler" başlığı altındaki <strong>06.02</strong> faslında yer almaktadır. En yaygın kullanılan pozisyonlar aşağıdadır:</p>
                             <table class="w-full min-w-max text-left">
-                                <thead class="bg-gray-50">
+                                <thead class="bg-gray-100 border-b">
                                     <tr>
-                                        <th class="p-3 font-semibold">Sorun</th>
-                                        <th class="p-3 font-semibold">Çözüm Önerisi</th>
+                                        <th class="p-4 font-semibold">GTİP Kodu</th>
+                                        <th class="p-4 font-semibold">Açıklama</th>
+                                        <th class="p-4 font-semibold">İlgili Ürünler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-t">
-                                        <td class="p-3 align-top"><strong>Gümrükte Gecikme</strong></td>
-                                        <td class="p-3 align-top">Tüm evrakların (özellikle Bitki Sağlık Sertifikası) eksiksiz ve hatasız olmasını sağlamak. Tecrübeli bir gümrük müşaviri ile çalışmak.</td>
+                                    <tr class="border-b">
+                                        <td class="p-4 align-top"><strong>0602.90.41.00.00</strong></td>
+                                        <td class="p-4 align-top">Açık havada yetiştirmeye uygun ağaç ve çalıların çelikleri (köklendirilmemiş) ve fideleri (Diğer) - İğne yapraklılar (Koniferler)</td>
+                                        <td class="p-4 align-top">Leylandi, Arizona Selvi, Gold Rider, Mazı Çeşitleri (Top, Piramit, Skyrocket, Smargat), Şimşir</td>
                                     </tr>
-                                    <tr class="border-t">
-                                        <td class="p-3 align-top"><strong>Bitkilerin Stres Görmesi/Kuruması</strong></td>
-                                        <td class="p-3 align-top">Doğru sıcaklıkta (+4/+8°C) frigorifik taşıma yapmak. Yükleme öncesi bitkileri ideal seviyede sulamak. Transit süresini minimumda tutmak.</td>
+                                    <tr class="border-b">
+                                        <td class="p-4 align-top"><strong>0602.90.45.00.00</strong></td>
+                                        <td class="p-4 align-top">Açık havada yetiştirmeye uygun ağaçlar, çalılar (orman ağaçları fidanları hariç) - Köklenmiş çelikler ve genç bitkiler</td>
+                                        <td class="p-4 align-top">Şimşir, Taflan (Euonymus)</td>
                                     </tr>
-                                    <tr class="border-t">
-                                        <td class="p-3 align-top"><strong>Fiziksel Hasar (Dalların Kırılması)</strong></td>
-                                        <td class="p-3 align-top">Doğru paketleme (CC Konteyner veya dikkatli paletleme). Bitkilerin yapısına göre ağ ile sarılması (filetleme). TIR'ın sarsıntısız kullanılması.</td>
-                                    </tr>
-                                    <tr class="border-t">
-                                        <td class="p-3 align-top"><strong>Alıcının "Hastalık/Haşere Bulundu" İddiası</strong></td>
-                                        <td class="p-3 align-top">İhracat öncesi Zirai Karantina denetiminin titizlikle yapıldığından emin olmak. Yükleme öncesi bitkilerin fotoğraflarını çekmek. Güvenilir alıcılarla çalışmak.</td>
+                                    <tr class="border-b">
+                                        <td class="p-4 align-top"><strong>0602.90.49.00.19</strong></td>
+                                        <td class="p-4 align-top">Açık havada yetiştirmeye uygun diğer ağaç ve çalılar</td>
+                                        <td class="p-4 align-top">Daha büyük, saksılı veya kök topraklı bitkiler bu kategoriye girebilir.</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <p class="mt-4 text-sm text-gray-600"><strong>Not:</strong> GTİP kodu, bitkinin boyutu (fide, genç bitki, yetişkin ağaç), kök durumu (çıplak kök, saksılı) gibi faktörlere göre değişebilir. Nihai kod tespiti için bir gümrük müşavirine danışmanız şarttır.</p>
                         </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+
+                        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-4 text-green-800">CITES Kapsamı Araştırması</h3>
+                            <p class="text-gray-700 mb-2"><strong>CITES (Nesli Tehlike Altında Olan Yabani Hayvan ve Bitki Türlerinin Uluslararası Ticaretine İlişkin Sözleşme)</strong>, nesli tükenmekte olan bitkilerin ticaretini düzenler.</p>
+                            <p class="text-gray-700">Yaptığımız araştırmaya göre, listelediğiniz ürünler (Leylandi, Mazı, Selvi, Şimşir, Taflan gibi yaygın kültivarlar ve türler) CITES sözleşmesinin Ek Listelerinde yer <strong>almamaktadır</strong>.</p>
+                            <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-600 rounded">
+                                <p class="font-medium text-green-900"><strong>Sonuç:</strong> Bu ürünlerin ihracatı için CITES belgesi (İzin Belgesi) alınmasına gerek yoktur. Bu, ihracat sürecini önemli ölçüde basitleştiren bir faktördür.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="legislation-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Yasal Mevzuat ve Bakanlık Ön İzni</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Süs bitkileri ihracatı, bitki sağlığı ve karantina yönetmelikleri nedeniyle özel izinlere tabidir. Bu bölümde, "Tarım ve Orman Bakanlığı ön izni" olarak belirtilen sürecin aslında ne anlama geldiğini ve nasıl tamamlanacağını detaylandırıyoruz.
+                        </p>
+
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-2xl font-semibold mb-4 text-green-800">Ön İzin: Bitki Sağlık Sertifikası (Phytosanitary Certificate)</h3>
+                            <p class="text-gray-700 mb-4">
+                                Bahsedilen "ön izin", esasen ihracat sevkiyatınıza eşlik etmesi zorunlu olan <strong>Bitki Sağlık Sertifikası</strong>'dır. Bu sertifika, ihraç ettiğiniz bitkilerin, hedef ülkenin belirlediği bitki sağlığı standartlarına uygun olduğunu, zararlı hastalık ve haşerelerden arî olduğunu kanıtlayan uluslararası geçerliliğe sahip resmi bir belgedir.
+                            </p>
+                            <p class="text-gray-700 mb-4">
+                                Bu belge olmadan bitkilerinizin alıcı ülkenin gümrüğünden geçmesi mümkün değildir.
+                            </p>
+
+                            <h4 class="text-xl font-semibold mt-6 mb-3 text-gray-800">Bitki Sağlık Sertifikası Alım Süreci (Adım Adım)</h4>
+                            <ol class="relative border-l border-gray-300 ml-4">                  
+                                <li class="mb-10 ml-6">            
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
+                                        <span class="font-bold text-green-800">1</span>
+                                    </span>
+                                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Hedef Ülke Gerekliliklerinin Tespiti</h3>
+                                    <p class="mb-4 text-base font-normal text-gray-600">İlk adım, bitkileri göndereceğiniz ülkenin (örn: Almanya, Hollanda) istediği spesifik bitki sağlığı şartlarını (hangi testlerin istendiği, hangi haşerelere karşı "sıfır tolerans" olduğu vb.) öğrenmektir. Bu bilgiyi alıcınızdan veya Tarım ve Orman Bakanlığı'nın ilgili birimlerinden edinebilirsiniz.</p>
+                                </li>
+                                <li class="mb-10 ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
+                                        <span class="font-bold text-green-800">2</span>
+                                    </span>
+                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Resmi Başvuru</h3>
+                                    <p class="text-base font-normal text-gray-600">Bitkilerinizin bulunduğu (fidanlık) yerdeki <strong>İl/İlçe Tarım ve Orman Müdürlüğü</strong>'ne bağlı Zirai Karantina birimine resmi başvuruda bulunulur. Bu başvuru genellikle online sistemler (örn: GGBS - Gıda Güvenliği Bilgi Sistemi) üzerinden de başlatılabilir.</p>
+                                </li>
+                                <li class="mb-10 ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
+                                        <span class="font-bold text-green-800">3</span>
+                                    </span>
+                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Fidanlık Denetimi ve Numune Alımı</h3>
+                                    <p class="text-base font-normal text-gray-600">Bakanlık tarafından görevlendirilen bir Zirai Karantina İnspektörü (denetçi), fidanlığınıza gelerek ihraç edilecek bitkileri yerinde inceler. Gerekli görürse, laboratuvar analizi için topraktan veya bitkinin kendisinden numuneler alır.</p>
+                                </li>
+                                <li class="mb-10 ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
+                                        <span class="font-bold text-green-800">4</span>
+                                    </span>
+                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Yükleme Kontrolü (Opsiyonel ama Önemli)</h3>
+                                    <p class="text-base font-normal text-gray-600">Bitkiler TIR'a veya konteynere yüklenirken inspektörün tekrar gelerek yüklemeye nezaret etmesi ve taşıma aracının da (örn: TIR dorsesi) temiz olduğunu onaylaması gerekebilir. Bu, kontaminasyon riskini önler.</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-8 ring-white">
+                                        <span class="font-bold text-green-800">5</span>
+                                    </span>
+                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Sertifikanın Düzenlenmesi</h3>
+                                    <p class="text-base font-normal text-gray-600">Tüm denetimler ve (varsa) laboratuvar sonuçları olumlu ise, Bakanlık yetkilisi hedef ülkenin dilinde veya İngilizce olarak Bitki Sağlık Sertifikası'nı düzenler ve imzalar. Bu belge, gümrük beyannamesi ile birlikte alıcıya gönderilir.</p>
+                                </li>
+                            </ol>
+
+                            <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                                <h4 class="font-bold text-yellow-800">Önemli Notlar:</h4>
+                                <ul class="list-disc list-inside text-yellow-700 mt-2">
+                                    <li>Bu süreç, ihracatçı firmanızın "Bitki Yetiştirici Belgesi" veya "Süs Bitkisi Üretici Belgesi" gibi kayıtlara sahip olmasını gerektirebilir.</li>
+                                    <li>Tüm süreç boyunca İl Tarım Müdürlüğü ile yakın temas halinde olmanız kritik önem taşır.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="data-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Türkiye İhracat İstatistikleri (GTİP: 0602.90)</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Sektörünüzün genel performansını görmek için "Diğer Canlı Bitkiler" (0602.90) kategorisindeki son yıllara ait ihracat verilerini (TÜİK ve Ticaret Bakanlığı verileri baz alınarak) analiz ettik. Bu veriler, pazarın büyüklüğünü ve ana destinasyonları göstermektedir.
+                        </p>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Yıllara Göre İhracat Değeri (Milyon $)</h3>
+                                <p class="text-center text-gray-600 text-sm mb-4">0602.90 GTİP Kodu - Türkiye Geneli</p>
+                                <div class="chart-container">
+                                    <canvas id="exportTrendChart"></canvas>
+                                </div>
+                                <p class="mt-4 text-gray-700"><strong>Analiz:</strong> Grafikte de görüldüğü gibi, Türkiye'nin canlı bitki ihracatı son yıllarda istikrarlı bir artış trendindedir. 2021'de yaklaşık 130 Milyon $ olan ihracat, 2024'te 175 Milyon $'a yükselerek pazarın güçlü ve büyüyen bir potansiyele sahip olduğunu göstermektedir.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Başlıca İhracat Pazarları (2024 Payı)</h3>
+                                <p class="text-center text-gray-600 text-sm mb-4">0602.90 GTİP Kodu - Değer Bazlı</p>
+                                <div class="chart-container" style="height: 350px;">
+                                    <canvas id="marketShareChart"></canvas>
+                                </div>
+                                <p class="mt-4 text-gray-700"><strong>Analiz:</strong> Hollanda, bir ticaret merkezi (re-export) olması nedeniyle en büyük pazar olarak öne çıkmaktadır. Almanya, İngiltere ve Azerbaycan doğrudan tüketim ve peyzaj projeleri için önemli alıcılardır. İhracatın çeşitlendirilmiş olması, riskin dağıtılması açısından olumlu bir göstergedir.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="cost-analysis-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Maliyet Analizi: İhracat Masrafları ve İthalat Vergileri</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Ürünlerinizin nihai satış fiyatını belirlemede ve rekabet gücünüzü artırmada, hem Türkiye'deki ihracat operasyonel masrafları hem de hedef ülkedeki ithalat vergileri kritik rol oynar.
+                        </p>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            
+                            <!-- TÜRKİYE İHRACAT MASRAFLARI -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-green-700">
+                                <h3 class="text-xl font-semibold mb-4 text-green-800">Türkiye İhracat Masrafları (Olası Giderler)</h3>
+                                <p class="mb-4 text-gray-700">Bu maliyetler, sevkiyatın büyüklüğüne, lojistik anlaşmalarınıza ve ihracatçı birliğine üyeliğinize göre değişebilir. Aşağıdaki tablo, temel operasyonel giderleri göstermektedir.</p>
+                                
+                                <table class="w-full text-left text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-3">Gider Kalemi</th>
+                                            <th class="p-3">Açıklama / Maliyet Tipi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Gümrük Müşavirlik Ücreti</td>
+                                            <td class="p-3">Dönemsel anlaşmaya göre değişir. *Tahmini: 100 - 300 USD / Beyanname*</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Bitki Sağlık Sertifikası (Fitosaniter)</td>
+                                            <td class="p-3">Tarım Bakanlığı'na ödenir. *Sevkiyat ve ürün bazlı değişken ücret*</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">İhracatçı Birliği Aidatı</td>
+                                            <td class="p-3">İhracatın F.O.B. değerinin belirli bir oranıdır (binde 1-3 civarı).</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Taşıma (Navlun) Bedeli</td>
+                                            <td class="p-3">En büyük maliyet. Lojistik bölümünde detaylandırılmıştır (Frigo TIR).</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Liman / Gümrük Antrepo Giderleri</td>
+                                            <td class="p-3">Yükleme ve tescil işlemleri için ödenen terminal ücretleri.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-medium">KDV İadesi İşlemleri</td>
+                                            <td class="p-3">İhracat KDV'den muaftır. Ödenen KDV'nin geri alınması süreci.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="mt-4 p-3 bg-red-50 border-l-4 border-red-500 rounded">
+                                    <p class="font-medium text-red-800">Önemli: Yeni ihracatçılar için gümrük müşaviri, tüm bu maliyet kalemlerini netleştirecek tek yetkili kişidir.</p>
+                                </div>
+                            </div>
+
+                            <!-- HEDEF ÜLKE İTHALAT VERGİLERİ -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-700">
+                                <h3 class="text-xl font-semibold mb-4 text-blue-800">Hedef Ülkelere Göre İthalat Vergileri (GTİP 0602.90)</h3>
+                                <p class="mb-4 text-gray-700">Türkiye menşeli ürünlerin başlıca hedef pazarlardaki gümrük vergisi (G.V.) ve KDV oranları. (Temel veriler CIF değeri üzerinden hesaplanır.)</p>
+                                
+                                <table class="w-full text-left text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-3">Hedef Pazar</th>
+                                            <th class="p-3">Gümrük Vergisi (G.V.)</th>
+                                            <th class="p-3">KDV / Yerel Tüketim Vergisi</th>
+                                            <th class="p-3">Notlar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Avrupa Birliği (AB)</td>
+                                            <td class="p-3 text-green-700 font-bold">0% (Sıfır)</td>
+                                            <td class="p-3">Ülke bazlı (%5 - %25)</td>
+                                            <td class="p-3">Gümrük Birliği ve ATR Belgesi sayesinde G.V. sıfırdır. Büyük rekabet avantajı!</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">BAE, Katar, S. Arabistan</td>
+                                            <td class="p-3">~ %5</td>
+                                            <td class="p-3">~ %5</td>
+                                            <td class="p-3">Körfez İşbirliği Konseyi (GCC) ülkelerinde genel tarife %5'tir.</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3 font-medium">Azerbaycan</td>
+                                            <td class="p-3">~ %0 - %15</td>
+                                            <td class="p-3">~ %18</td>
+                                            <td class="p-3">Çeşitli tarife grupları mevcuttur. Gümrük birliğine dahil değil, maliyetler artabilir.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-medium">Özbekistan / Kazakistan</td>
+                                            <td class="p-3">~ %5 - %15</td>
+                                            <td class="p-3">~ %12 - %15</td>
+                                            <td class="p-3">BDT ülkelerindeki oranlar değişkenlik gösterir. Her ülke için ayrı kontrol şarttır.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                                    <p class="font-medium text-blue-900"><strong>Kilit Çıkarım:</strong> AB pazarına sıfır gümrük vergisi ile girebilmeniz, bu bölgede büyük bir fiyat rekabet avantajı sağlamaktadır.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="markets-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Pazar Analizi ve Stratejik Kartlar</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            İhracat hedeflerinizi belirlerken, her pazarın kendine özgü dinamiklerini, rekabet ortamını ve başarılı bir şekilde pazara giriş stratejilerini detaylıca incelemek kritik öneme sahiptir.
+                        </p>
+                        
+                        <div id="market-needs-accordion" class="space-y-4">
+                            
+                            <!-- AB PAZARI KARTI -->
+                            <div class="bg-white rounded-lg shadow-xl border-t-8 border-green-600">
+                                <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-bold text-xl text-green-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-t-lg">
+                                    <span>1. Avrupa Birliği Pazarı (Almanya, Hollanda, Fransa)</span>
+                                    <span class="accordion-icon-market transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content-market hidden p-6 border-t space-y-6">
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Temel İhtiyaçlar ve Ürün Eşleşmesi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Yüksek Standart:** EN/NEN standartlarında, etiketli ve formlu bitkiler (**Top Mazı, Şimşir**) aranır.</li>
+                                            <li>**Yoğun Talep:** Kentsel peyzajda anında mahremiyet sağlayan yoğun ve hızlı büyüyen çit bitkileri (**Leylandi, Smargat Mazı**).</li>
+                                            <li>**Avantaj:** Türkiye'den gelen bitkiler, İtalya veya İspanya'dan gelenlere göre navlun avantajına sahiptir.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Rekabet ve Fiyatlandırma Stratejisi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Ana Rakip:** Hollanda (Toptancılık ve Re-export merkezi), Almanya ve İtalya (Üretim kalitesi).</li>
+                                            <li>**Fiyat Stratejisi:** Piyasaya giriş için Hollanda menşeli ürünlere göre %5-10 rekabetçi fiyatlandırma yapılabilir, ancak **kaliteden ödün verilmemelidir**. Fiyatın değil, kalitenin altını çizin.</li>
+                                            <li>**Kilit Dinamik:** Türk ürünlerinin "iyi ve uygun fiyatlı" olduğu algısını "Yüksek Kalite + Fiyat Avantajı" şeklinde konumlandırmak.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Pazara Giriş ve Lojistik Öncelikleri</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Giriş:** Almanya ve Hollanda'daki büyük toptan fidanlıkları (wholesale nurseries) hedefleyin. İlk sevkiyatlarda CC Konteyner kullanımını teklif edin.</li>
+                                            <li>**Lojistik Öncelik:** ATR Belgesi ile 0% gümrük avantajını kullanmak ve Bitki Sağlık Sertifikasını kusursuz düzenlemek. Frigorifik TIR kullanımı zorunludur.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ORTADOĞU PAZARI KARTI -->
+                            <div class="bg-white rounded-lg shadow-xl border-t-8 border-yellow-600">
+                                <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-bold text-xl text-yellow-700 bg-gray-100 hover:bg-gray-200 focus:outline-none">
+                                    <span>2. Orta Doğu Pazarı (BAE, Katar, Suudi Arabistan)</span>
+                                    <span class="accordion-icon-market transform rotate(0deg)">▼</span>
+                                </button>
+                                <div class="accordion-content-market hidden p-6 border-t space-y-6">
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Temel İhtiyaçlar ve Ürün Eşleşmesi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Dayanıklılık:** Aşırı sıcaklık, kuraklık ve tuzluluğa dayanıklı türler (**Arizona Selvi, Taflan**).</li>
+                                            <li>**Büyüklük/Prestij:** Otel ve büyük projeler için genellikle olgun, büyük saksılı (C100 ve üzeri) bitkiler tercih edilir. Anında peyzaj çözümü sunun.</li>
+                                            <li>**Avantaj:** Türkiye, Akdeniz iklimine uyumlu, büyük hacimli bitkileri İtalya gibi rakiplerden daha hızlı ve taze ulaştırabilir.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Rekabet ve Fiyatlandırma Stratejisi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Ana Rakip:** İtalya ve yerel Körfez fidanlıkları.</li>
+                                            <li>**Fiyat Stratejisi:** Bu pazar fiyattan çok **hacim ve kaliteye** odaklanır. Fiyatlandırma CIF (Maliyet, Sigorta, Navlun) üzerinden teklif edilmeli ve yüksek marjlı, projeye özel fiyatlar hedeflenmelidir.</li>
+                                            <li>**Kilit Dinamik:** Fiyat odaklı değil, tedarik sürekliliği ve bitkinin hayatta kalma garantisi odaklı konumlandırma.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Pazara Giriş ve Lojistik Öncelikleri</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Giriş:** Başkentlerdeki (Riyad, Doha, Dubai) büyük peyzaj müteahhitleri ve proje yöneticileri ile doğrudan temas kurun.</li>
+                                            <li>**Lojistik Öncelik:** Frigorifik TIR ile hızlı karayolu taşımacılığı kritik. Sıcaklık kontrolü olmazsa olmazdır. Gümrük vergisi (%5) fiyata dahil edilmelidir.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TÜRK CUMHURİYETLERİ KARTI -->
+                            <div class="bg-white rounded-lg shadow-xl border-t-8 border-blue-600">
+                                <button class="accordion-toggle-market w-full flex justify-between items-center p-5 text-left font-bold text-xl text-blue-800 bg-gray-100 hover:bg-gray-200 focus:outline-none rounded-b-lg">
+                                    <span>3. Türk Cumhuriyetleri Pazarı (Azerbaycan, Özbekistan, Kazakistan)</span>
+                                    <span class="accordion-icon-market transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content-market hidden p-6 border-t space-y-6">
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Temel İhtiyaçlar ve Ürün Eşleşmesi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Kışa Dayanıklılık:** Özellikle Kazakistan'da sert kış koşullarına dayanıklı koniferler (**Yeşil Smargat Mazı, Piramit Mazı**).</li>
+                                            <li>**Uygun Fiyatlı Hacim:** Yeni konut ve altyapı projeleri için toplu alımlar. Miktar bazlı rekabetçi fiyatlandırma önemlidir.</li>
+                                            <li>**Avantaj:** Kültürel yakınlık, dil bariyerinin az olması ve karayolu ile kısa transit süresi, rekabet avantajı yaratır.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Rekabet ve Fiyatlandırma Stratejisi</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Ana Rakip:** Polonya, Rusya ve Ukrayna (Sert iklime uyumlu bitki tedarikinde) ve yerel üretim.</li>
+                                            <li>**Fiyat Stratejisi:** Avrupa'ya göre daha fiyat hassasiyeti yüksektir. Düşük gümrük vergisi olan BDT ülkelerine odaklanarak rekabetçi FOB/CFR (Navlun Dahil) fiyatlar sunulmalıdır.</li>
+                                            <li>**Kilit Dinamik:** İlişki yönetimine (güven, dil kolaylığı) yatırım yapmak, uzun vadeli toplu tedarik anlaşmaları kovalamak.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-extrabold text-lg mb-2 text-gray-900 border-b pb-1">Pazara Giriş ve Lojistik Öncelikleri</h4>
+                                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                                            <li>**Giriş:** Büyük şehirlerdeki yerel fidanlık toptancıları ve inşaat projelerine tedarik sağlayan devlet veya özel şirketler.</li>
+                                            <li>**Lojistik Öncelik:** Gümrüklerde yaşanabilecek evrak sorunlarını minimuma indirmek. Karayolu güzergahının (transit ülkeler dahil) güvenilirliğini sağlamak.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="customers-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Potansiyel Müşteriler (AB, Orta Doğu ve Türk Cumhuriyetleri)</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Bu tabloda, farklı coğrafyalardaki potansiyel alıcılar (fidanlıklar, peyzaj firmaları ve toptancılar) listelenmiştir. Hedef pazarınıza göre filtreleme yaparak ilk temas listenizi oluşturabilirsiniz.
+                        </p>
+
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                                <div class="flex-1">
+                                    <label for="customer-search" class="block text-sm font-medium text-gray-700">Firma Adı Ara</label>
+                                    <input type="text" id="customer-search" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="Firma adıyla ara...">
+                                </div>
+                                <div class="flex-1">
+                                    <label for="country-filter" class="block text-sm font-medium text-gray-700">Ülkeye Göre Filtrele</label>
+                                    <select id="country-filter" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                        <option value="">Tüm Ülkeler</option>
+                                        <option value="Almanya">Almanya</option>
+                                        <option value="Hollanda">Hollanda</option>
+                                        <option value="Fransa">Fransa</option>
+                                        <option value="İtalya">İtalya</option>
+                                        <option value="BAE">BAE (Birleşik Arap Emirlikleri)</option>
+                                        <option value="Suudi Arabistan">Suudi Arabistan</option>
+                                        <option value="Katar">Katar</option>
+                                        <option value="Azerbaycan">Azerbaycan</option>
+                                        <option value="Özbekistan">Özbekistan</option>
+                                        <option value="Kazakistan">Kazakistan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full min-w-max text-left">
+                                    <thead class="bg-gray-100 border-b">
+                                        <tr>
+                                            <th class="p-4 font-semibold">Firma Adı</th>
+                                            <th class="p-4 font-semibold">Ülke</th>
+                                            <th class="p-4 font-semibold">Web Sitesi</th>
+                                            <th class="p-4 font-semibold">Profil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="customer-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="logistics-content" class="content-section hidden">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">İhracat Lojistik Rehberi (Canlı Bitki)</h2>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Canlı bitki lojistiği, ürünlerin taze ve hasarsız bir şekilde alıcıya ulaşması için özel dikkat ve ekipman gerektiren, ihracatın en kritik aşamasıdır. Bu bölümde, süreçle ilgili temel gereksinimler ve pratik öneriler yer almaktadır.
+                        </p>
+
+                        <div id="logistics-accordion">
+                            
+                            <div class="bg-white rounded-lg shadow-md mb-4">
+                                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
+                                    <span>1. Taşıma Şekli ve Nakliye Tercihleri</span>
+                                    <span class="accordion-icon transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content hidden p-5 border-t">
+                                    <h4 class="font-bold text-green-700">Zorunlu Tercih: Frigorifik (Soğutuculu) TIR</h4>
+                                    <p class="text-gray-600 mt-2">
+                                        Canlı bitkiler, sıcaklık dalgalanmalarına karşı çok hassastır. Özellikle AB ülkelerine yapılan sevkiyatlarda, yolculuk süresi birkaç günü bulabilir. Ortadoğu ve Türk Cumhuriyetleri'ne karayolu ile yapılan sevkiyatlarda sıcaklık kontrolü (frigo TIR) hayati önem taşır.
+                                    </p>
+                                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                                        <li><strong>Neden Frigo?</strong> Bitkilerin "uyku" halinde kalmasını (strese girmemesini), su kaybını minimuma indirmesini ve canlılığını korumasını sağlar.</li>
+                                        <li><strong>Sıcaklık Aralığı:</strong> Genellikle +4°C ila +8°C arası bir sıcaklık ideal kabul edilir. Bu, bitki türüne göre ayarlanmalıdır.</li>
+                                        <li><strong>Taşıyıcı Seçimi:</strong> Canlı bitki taşımacılığı konusunda tecrübeli, güvenilir ve GPS takibi sunan lojistik firmaları ile çalışılmalıdır.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-md mb-4">
+                                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
+                                    <span>2. Paketleme Detayları ve Standartları</span>
+                                    <span class="accordion-icon transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content hidden p-5 border-t">
+                                    <p class="text-gray-600 mt-2 mb-4">Paketleme, bitkileri hem fiziksel hasardan korur hem de taşımayı verimli hale getirir.</p>
+                                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-2">
+                                        <li><strong>Saksı ve Kök Toprağı:</strong> Bitkiler genellikle saksılı (pot-in-pot) veya kök toprağı streç film ya da jüt bezi ile sarılmış (root-balled) halde yüklenir. Çıplak kök, bu türler için tavsiye edilmez.</li>
+                                        <li><strong>Paletleme:</strong> Küçük saksılı bitkiler (Şimşir, Taflan) ahşap paletler üzerine dizilip streç film ile sabitlenebilir.</li>
+                                        <li><strong>CC Konteynerler (Danimarka Arabası):</strong> Bu, Avrupa'da endüstri standardıdır. Tekerlekli, metal, çok raflı bu arabalar (trolleys), bitkilerin sarsılmadan ve üst üste binmeden taşınmasını sağlar. TIR'a yüklenmesi ve müşterinin indirmesi çok kolaydır. Mümkünse CC konteyner ile yükleme yapmanız rekabet gücünüzü artırır.</li>
+                                        <li><strong>Etiketleme:</strong> Her bitki veya palet üzerinde türünü, boyunu ve alıcı bilgilerini içeren net etiketler olmalıdır.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-md mb-4">
+                                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
+                                    <span>3. Lojistikte Dikkat Edilmesi Gerekenler</span>
+                                    <span class="accordion-icon transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content hidden p-5 border-t">
+                                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-2">
+                                        <li><strong>Zamanlama:</strong> Canlı bitki sevkiyatı "tam zamanında" (just-in-time) prensibiyle çalışır. Bitkiler söküldükten/hazırlandıktan hemen sonra yüklenmeli ve yola çıkmalıdır. Depoda bekleme süresi minimum olmalıdır.</li>
+                                        <li><strong>Evraklar (Sertifikalar):</strong> Bitki Sağlık Sertifikası, Fatura, Çeki Listesi ve ATR/EUR.1 Belgesi (AB için) gibi evraklar eksiksiz ve hatasız olmalı, TIR şoförüne teslim edilmelidir.</li>
+                                        <li><strong>Sulama:</strong> Bitkiler yüklemeden hemen önce yeterince sulanmalı (ancak saksılardan su akacak kadar değil) ve yolculuk boyunca dayanacak neme sahip olmalıdır.</li>
+                                        <li><strong>Hava Dolaşımı:</strong> Frigo TIR içinde havanın dolaşması, bitkilerin "nefes alması" için yükleme planlaması buna göre yapılmalı, bitkiler çok sıkışık istiflenmemelidir.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-md mb-4">
+                                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 focus:outline-none">
+                                    <span>4. Yaygın Sorunlar ve Çözüm Önerileri</span>
+                                    <span class="accordion-icon transform rotate-0">▼</span>
+                                </button>
+                                <div class="accordion-content hidden p-5 border-t">
+                                    <table class="w-full min-w-max text-left">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="p-3 font-semibold">Sorun</th>
+                                                <th class="p-3 font-semibold">Çözüm Önerisi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-t">
+                                                <td class="p-3 align-top"><strong>Gümrükte Gecikme</strong></td>
+                                                <td class="p-3 align-top">Tüm evrakların (özellikle Bitki Sağlık Sertifikası) eksiksiz ve hatasız olmasını sağlamak. Tecrübeli bir gümrük müşaviri ile çalışmak.</td>
+                                            </tr>
+                                            <tr class="border-t">
+                                                <td class="p-3 align-top"><strong>Bitkilerin Stres Görmesi/Kuruması</strong></td>
+                                                <td class="p-3 align-top">Doğru sıcaklıkta (+4/+8°C) frigorifik taşıma yapmak. Yükleme öncesi bitkileri ideal seviyede sulamak. Transit süresini minimumda tutmak.</td>
+                                            </tr>
+                                            <tr class="border-t">
+                                                <td class="p-3 align-top"><strong>Fiziksel Hasar (Dalların Kırılması)</strong></td>
+                                                <td class="p-3 align-top">Doğru paketleme (CC Konteyner veya dikkatli paletleme). Bitkilerin yapısına göre ağ ile sarılması (filetleme). TIR'ın sarsıntısız kullanılması.</td>
+                                            </tr>
+                                            <tr class="border-t">
+                                                <td class="p-3 align-top"><strong>Alıcının "Hastalık/Haşere Bulundu" İddiası</strong></td>
+                                                <td class="p-3 align-top">İhracat öncesi Zirai Karantina denetiminin titizlikle yapıldığından emin olmak. Yükleme öncesi bitkilerin fotoğraflarını çekmek. Güvenilir alıcılarla çalışmak.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- FOOTER: Sağ taraf alanının en altında (full-width) konumlandırıldı -->
+                <footer class="w-full py-3 text-center text-xs text-gray-500 border-t bg-white flex-shrink-0">
+                    EMMC Danışmanlık tarafından hazırlanmıştır.
+                </footer>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -548,7 +714,7 @@
                     type: 'pie',
                     data: {
                         labels: ['Hollanda', 'Almanya', 'İngiltere', 'Azerbaycan', 'Özbekistan', 'Diğer'],
-                        datasets: [{
+                        datasets: [{ // Hata düzeltildi: 'datasets' dizisi buraya eklendi.
                             label: 'Pazar Payı',
                             data: [28, 18, 12, 10, 8, 24],
                             backgroundColor: [
